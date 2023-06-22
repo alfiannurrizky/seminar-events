@@ -1,0 +1,11 @@
+{
+    "displayName": "project-structure-api-test",
+    "verbose": true,
+    "roots": ["src/"],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+        "**/src/repositories/**",
+        "**/src/services/**",
+        "!**/src/services/__test__/**"
+    ]
+}
