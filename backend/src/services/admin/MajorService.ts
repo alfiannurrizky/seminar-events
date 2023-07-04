@@ -1,9 +1,10 @@
-import { PrismaClient } from '@prisma/client'
+import { Major, PrismaClient } from '@prisma/client'
 import { MajorType } from 'src/types/MajorType'
 const prisma = new PrismaClient()
 
 interface IMajor {
     create(payload: MajorType): Promise<MajorType>
+    getMajors(): Promise<Major[]>
 }
 class MajorService implements IMajor {
     async create(payload: MajorType) {
@@ -14,6 +15,12 @@ class MajorService implements IMajor {
         })
 
         return major
+    }
+
+    async getMajors() {
+        const majors = await prisma.major.findMany()
+
+        return majors
     }
 }
 

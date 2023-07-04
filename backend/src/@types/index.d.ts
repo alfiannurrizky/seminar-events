@@ -5,6 +5,7 @@ declare global {
     namespace Express {
         interface Request {
             user: UserType
+            student: UserType
         }
     }
 }

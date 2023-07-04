@@ -18,6 +18,7 @@ class App {
         this.app.use(cors())
         this.app.use(compression())
         this.app.use(morgan('dev'))
+        this.app.use(express.static('public'))
     }
 
     routes() {
