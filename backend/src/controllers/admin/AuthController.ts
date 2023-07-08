@@ -12,8 +12,12 @@ class AuthController {
             logger.info('login admin')
 
             res.status(200).json({
+                success: true,
                 message: 'Logged in successfully',
-                data: token
+                data: {
+                    tokenType: 'Bearer',
+                    token: token
+                }
             })
         } catch (error) {
             logger.error(error)

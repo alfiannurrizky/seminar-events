@@ -4,7 +4,7 @@ import { UserType } from '../../types/UserType'
 dotenv.config()
 
 class JWT {
-    signToken(payload: UserType, expires = '1d'): Promise<string | undefined> {
+    signToken(payload: UserType, expires = '1h'): Promise<string | undefined> {
         return new Promise((resolve, reject) => {
             jwt.sign(
                 {

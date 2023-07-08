@@ -1,6 +1,8 @@
 import express, { Application } from 'express'
 import cors from 'cors'
 import compression from 'compression'
+import * as swaggerUi from 'swagger-ui-express'
+import { specs } from './utils/swagger'
 import morgan from 'morgan'
 import router from './routes/index'
 
@@ -19,6 +21,7 @@ class App {
         this.app.use(compression())
         this.app.use(morgan('dev'))
         this.app.use(express.static('public'))
+        this.app.use(`/docs/v1/`, swaggerUi.serve, swaggerUi.setup(specs))
     }
 
     routes() {

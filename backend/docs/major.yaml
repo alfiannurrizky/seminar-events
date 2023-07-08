@@ -1,0 +1,31 @@
+/api/admin/majors:
+    post:
+        summary: Create Major
+        description: Create Major
+        tags:
+            - majors
+        security:
+            -bearerAuth: []
+        requestBody:
+            content:
+                'application/json':
+                    schema:
+                        properties:
+                            name:
+                                type: string
+                        required:
+                            - name
+                        example:
+                            name: 'business management'
+            required: true
+        responses:
+            200:
+                $ref: '#/components/responses/200'
+            400:
+                $ref: '#/components/responses/400'
+            401:
+                $ref: '#/components/responses/401'
+            403:
+                $ref: '#/components/responses/403'
+            422:
+                $ref: '#/components/responses/422'

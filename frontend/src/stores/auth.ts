@@ -1,21 +1,28 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
+import { useRouter } from 'vue-router'
 
-import axios from "axios";
+import axios from 'axios'
+const router = useRouter()
 
-export const useAuthStore = defineStore("auth", {
+export const useAuthStore = defineStore('auth', {
   state: () => ({
-    student: null,
+    student: null
   }),
   actions: {
     async signIn(payload: object) {
       await axios
-        .post("http://127.0.0.1:4004/api/student/login", payload)
+        .post('http://127.0.0.1:4004/api/student/login', payload)
         .then((res) => {
-          localStorage.setItem("student_token", res.data.token);
+          localStorage.setItem('student_token', res.data.token)
         })
         .catch((er) => {
-          console.log(er);
-        });
-    },
-  },
-});
+          if (er.response.status === 401) {
+            alert('email or password is wrong!')
+          }
+          router.push({
+            path: '/'
+          })
+        })
+    }
+  }
+})
